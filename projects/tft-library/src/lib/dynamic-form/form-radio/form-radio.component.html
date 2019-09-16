@@ -1,0 +1,17 @@
+<tft-field-container
+  [config]="config"
+  [group]="group">
+
+  <div [formGroup]="group">
+    <mat-radio-group
+      [formControlName]="config.controlName">
+      <mat-radio-button
+        *ngFor="let option of options$ | async"
+        [value]="option.value"
+        [class.block-radio]=block>
+        {{ option.label }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+</tft-field-container>

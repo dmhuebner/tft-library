@@ -334,10 +334,39 @@ export class MyDynamicFormComponent implements OnInit, AfterViewInit {
             text: 'Checkboxes after label are good sometimes too',
             controlName: 'inlineBlockCheckboxesAwesome',
             labelPosition: 'after',
+            inline: false,
             classes: [],
             validators: [Validators.required],
           }
         ]
+      },
+      {
+        controlType: ControlType.RADIO,
+        label: 'What is your all time favorite coding language?',
+        controlName: 'favCodingLanguage',
+        options: [
+          { label: 'JavaScript', value: 'javascript' },
+          { label: 'Java', value: 'java' },
+          { label: 'Go', value: 'golang' },
+          { label: 'Python', value: 'python' },
+          { label: 'Ruby', value: 'ruby' }
+        ],
+        validators: [Validators.required, Validators.minLength(5)],
+      },
+      {
+        controlType: ControlType.RADIO,
+        label: 'What is your favorite color?',
+        controlName: 'favColor',
+        block: true,
+        options: [
+          { label: 'Blue', value: 'blue' },
+          { label: 'Green', value: 'green' },
+          { label: 'Red', value: 'red' },
+          { label: 'Orange', value: 'orange' },
+          { label: 'Yellow', value: 'yellow' },
+          { label: 'Purple', value: 'purple' }
+        ],
+        validators: [Validators.required, Validators.minLength(5)],
       },
       {
         controlType: ControlType.SELECT,
@@ -369,12 +398,12 @@ export class MyDynamicFormComponent implements OnInit, AfterViewInit {
           return group.get(controlNameToWatch).valueChanges.pipe(
             switchMap( value => {
               switch (value) {
-                case 'gold':                 
-                  return of([ 
+                case 'gold':
+                  return of([
                     { label: 'gold 1', value: 'g1'},
                     { label: 'gold 2', value: 'g2'}
                   ])
-              
+
                 default:
                   return of([
                     { label: 'default 1', value: 'd1'},
@@ -477,7 +506,7 @@ export class MyDynamicFormComponent implements OnInit, AfterViewInit {
         // More values can be watched for, just add them to the array
         computeFieldConfig: {
           // we pass in the names of the controls who's values we want to watch and transform
-          // note: for now we can only hook up to sibling controls of this control. 
+          // note: for now we can only hook up to sibling controls of this control.
           // I am working on an API to give the consuming component access to the entire form group
           controlNamesToWatch: ['factorA', 'factorB', 'factorC'],
           // here we are expecting three numeric values because we are watching three input fields of input type number
@@ -533,7 +562,7 @@ export class MyDynamicFormComponent implements OnInit, AfterViewInit {
     return form.get('firstName').valueChanges.pipe(
       // implementing custom rxjs operator from top of file
       // it simply checks the firstName control return true if the field isn't blank false if it is
-      // that's all the showField control needs is a function that returns an observable which resolves a boolean 
+      // that's all the showField control needs is a function that returns an observable which resolves a boolean
       isNotBlank()
     );
   }

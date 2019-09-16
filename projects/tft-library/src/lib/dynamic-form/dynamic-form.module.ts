@@ -17,6 +17,7 @@ import { FormGroupComponent } from './form-group/form-group.component';
 import { FormGroupListComponent } from './form-group-list/form-group-list.component';
 import { ValidationHandlingModule } from '../validation-handling/public_api';
 import { FormAutocompleteComponent } from './form-autocomplete/form-autocomplete.component';
+import { FormRadioComponent } from './form-radio/form-radio.component';
 // directives
 import { DynamicFieldDirective } from './dynamic-field.directive';
 // providers
@@ -29,7 +30,8 @@ const FORM_FIELD_COMPONENTS = [
   FormGroupListComponent,
   FormAutocompleteComponent,
   FormTextareaComponent,
-  FormCheckboxComponent
+  FormCheckboxComponent,
+  FormRadioComponent
 ];
 
 @NgModule({
@@ -66,6 +68,7 @@ export {
   FormGroupListComponent,
   FormAutocompleteComponent,
   FormTextareaComponent,
-  FormCheckboxComponent
+  FormCheckboxComponent,
+  FormRadioComponent
 };
 

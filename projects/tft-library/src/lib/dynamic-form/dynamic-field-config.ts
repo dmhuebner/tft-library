@@ -9,6 +9,7 @@ import { ErrorDictionary } from '../validation-handling/public_api';
 import { ComputeFieldConfig, CheckControlConfig, CheckControlsConfig } from './dynamic-form.helpers';
 import { TextareaFieldConfig } from './form-textarea/textarea-field-config';
 import { CheckboxFieldConfig } from './form-checkbox/checkbox-field-config';
+import { RadioFieldConfig } from './form-radio/radio-field-config';
 
 
 interface DynamicFieldConfig {
@@ -42,7 +43,8 @@ type AnyFieldConfig = DynamicFieldConfig
   | FormConfig
   | AutocompleteFieldConfig
   | TextareaFieldConfig
-  | CheckboxFieldConfig;
+  | CheckboxFieldConfig
+  | RadioFieldConfig;
 
 interface Attr {
   name: string;
@@ -57,7 +59,8 @@ enum ControlType {
   SELECT = 'select',
   BUTTON = 'button',
   GROUP = 'group',
-  GROUP_LIST = 'groupList'
+  GROUP_LIST = 'groupList',
+  RADIO = 'radio'
 }
 
 export {ControlType, AnyFieldConfig, DynamicFieldConfig, FormGroupListConfig, FormConfig};
