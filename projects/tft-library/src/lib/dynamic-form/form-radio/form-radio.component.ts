@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { RadioFieldConfig, RadioOption } from './radio-field-config';
+import { RadioFieldConfig, RadioOption } from '../models/radio-field-config';
 import { observablifyOptions } from '../dynamic-form.helpers';
 
 @Component({

@@ -7,14 +7,29 @@
  * helper functions to use with the compute field function; and other logic shared between components
  */
 
-import { SelectFieldConfig, SelectOption, DEFAULT_EMPTY_OPTIONS_MESSAGE, OptionsCallback } from './form-select/select-field-config'
-import { from, Observable, of, isObservable, combineLatest, OperatorFunction } from 'rxjs';
-import { AnyFieldConfig, FormConfig, ControlType, FormGroupListConfig, DynamicFieldConfig } from './dynamic-field-config';
+import {
+  SelectFieldConfig,
+  SelectOption,
+  DEFAULT_EMPTY_OPTIONS_MESSAGE,
+  OptionsCallback,
+  AnyFieldConfig,
+  FormConfig,
+  ControlType,
+  FormGroupListConfig,
+  DynamicFieldConfig
+} from './models';
+import {
+  from,
+  Observable,
+  of,
+  isObservable,
+  combineLatest,
+  OperatorFunction
+} from 'rxjs';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { valueIn } from './dynamic-form.operators';
 import { map, tap, startWith } from 'rxjs/operators';
-import { AutocompleteFieldConfig } from './form-autocomplete/autocomplete-field-config';
-import { RadioFieldConfig, RadioOption } from './form-radio/radio-field-config';
+import { AutocompleteFieldConfig, RadioFieldConfig, RadioOption } from './models';
 
 
 /**
@@ -44,10 +59,11 @@ export function checkControlForValues(group: FormGroup, config: CheckControlConf
       map((isValueInValues: boolean) => {
         // since we can only check if the value is in the list of watched values, the evaluate function gives us
         // a chance to make other decisions based on if the boolean returned, e.g. return true if value not in watched values
-        if ( config.evaluate && config.evaluate instanceof Function ) return config.evaluate(isValueInValues);
-        else return isValueInValues;
+        if ( config.evaluate && config.evaluate instanceof Function ) {
+          return config.evaluate(isValueInValues);
+        } else { return isValueInValues; }
       })
-    )
+    );
   } else {
     return of(true);
   }
@@ -71,7 +87,7 @@ export interface CheckControlsConfig {
  */
 export function checkControlsForValues(group: FormGroup, config: CheckControlsConfig): Observable<any> {
   // if no config is passed we just want to show the field, so we return an observable of true
-  if (!config || !config.watchConfigs) return of(true);
+  if (!config || !config.watchConfigs) { return of(true); }
   // we run checkControlForValues on every control in the list of WatchConfigs creating
   // an array of Observable watching fields for values
   const fieldTriggers = config.watchConfigs.map(watchConfig => {
@@ -85,11 +101,13 @@ export function checkControlsForValues(group: FormGroup, config: CheckControlsCo
     startWith([true]),
     map((booleans: boolean[]) => {
       // if the user passed an evaluate function use it
-      if (config.evaluate && config.evaluate instanceof Function) return config.evaluate(booleans);
-      // otherwise we return true if any of the watched fields resolve to true
-      else return booleans.some(bool => bool);
+      if (config.evaluate && config.evaluate instanceof Function) {
+        return config.evaluate(booleans);
+      } else { // otherwise we return true if any of the watched fields resolve to true
+        return booleans.some(bool => bool);
+      }
     })
-  )
+  );
 }
 
 
@@ -160,8 +178,8 @@ function pipeOperatorsIntoObservable(observable: Observable<any>, operators: Ope
  * or an observable. This functions consumes any of those and returns an observable that
  * resolves an array of options
  *
- * @param options the options passed in from the config
- * @param emptyMessageOption the message to display when the array is empty
+ * @param config - the config object
+ * @param group - the form group
  */
 export function observablifyOptions(
   config: SelectFieldConfig | AutocompleteFieldConfig | RadioFieldConfig,
@@ -172,7 +190,7 @@ export function observablifyOptions(
   const options$ = reactiveOptionsConfig && options instanceof Function
   ? options(group, reactiveOptionsConfig)
   : options instanceof Function
-  ? from( (options as OptionsCallback)().then(map => map))
+  ? from( (options as OptionsCallback)())
   : Array.isArray(options)
   ? of(options)
   : isObservable(options)

@@ -1,36 +1,38 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 // custom modules
 import { CoreModule } from '../core/public_api';
 import { DesignModule } from '../design/public_api';
 import { UtilitiesModule } from '../utilities/public_api';
+import { ValidationHandlingModule } from '../validation-handling/public_api';
 // components
 import { DynamicFormComponent } from './dynamic-form.component';
 import { FieldContainerComponent } from './field-container/field-container.component';
-import { FormInputComponent } from './form-input/form-input.component';
-import { FormTextareaComponent } from './form-textarea/form-textarea.component';
-import { FormCheckboxComponent } from './form-checkbox/form-checkbox.component';
-import { FormSelectComponent } from './form-select/form-select.component';
-import { FormButtonComponent } from './form-button/form-button.component';
+import {
+  InputFieldComponent,
+  SelectFieldComponent,
+  AutocompleteFieldComponent,
+  CheckboxFieldComponent,
+  TextareaFieldComponent,
+  RaisedButtonComponent
+} from './material';
 import { FormGroupComponent } from './form-group/form-group.component';
 import { FormGroupListComponent } from './form-group-list/form-group-list.component';
-import { ValidationHandlingModule } from '../validation-handling/public_api';
-import { FormAutocompleteComponent } from './form-autocomplete/form-autocomplete.component';
+// TODO Rename Radio component
 import { FormRadioComponent } from './form-radio/form-radio.component';
 // directives
 import { DynamicFieldDirective } from './dynamic-field.directive';
-// providers
 
 const FORM_FIELD_COMPONENTS = [
-  FormInputComponent,
-  FormSelectComponent,
-  FormButtonComponent,
+  InputFieldComponent,
+  SelectFieldComponent,
+  AutocompleteFieldComponent,
+  CheckboxFieldComponent,
+  TextareaFieldComponent,
+  RaisedButtonComponent,
   FormGroupComponent,
   FormGroupListComponent,
-  FormAutocompleteComponent,
-  FormTextareaComponent,
-  FormCheckboxComponent,
   FormRadioComponent
 ];
 
@@ -47,7 +49,7 @@ const FORM_FIELD_COMPONENTS = [
     DynamicFieldDirective,
     FieldContainerComponent,
     DynamicFormComponent,
-    ...FORM_FIELD_COMPONENTS
+    ...FORM_FIELD_COMPONENTS,
   ],
   exports: [
     DynamicFormComponent,
@@ -61,14 +63,15 @@ export class DynamicFormModule { }
 
 export {
   DynamicFormComponent,
-  FormInputComponent,
-  FormSelectComponent,
-  FormButtonComponent,
+  InputFieldComponent,
+  SelectFieldComponent,
+  AutocompleteFieldComponent,
+  CheckboxFieldComponent,
+  TextareaFieldComponent,
+  RaisedButtonComponent,
   FormGroupComponent,
   FormGroupListComponent,
-  FormAutocompleteComponent,
-  FormTextareaComponent,
-  FormCheckboxComponent,
+  // TODO Rename radio
   FormRadioComponent
 };
 
