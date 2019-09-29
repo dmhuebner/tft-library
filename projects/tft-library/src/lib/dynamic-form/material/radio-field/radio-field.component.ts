@@ -2,16 +2,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { RadioFieldConfig, RadioOption } from '../models/radio-field-config';
-import { observablifyOptions } from '../dynamic-form.helpers';
+import { RadioFieldConfig, RadioOption } from '../../models';
+import { observablifyOptions } from '../../dynamic-form.helpers';
 
 @Component({
-  selector: 'tft-form-radio',
-  templateUrl: './form-radio.component.html',
-  styleUrls: ['./form-radio.component.scss'],
+  selector: 'tft-radio-field',
+  templateUrl: './radio-field.component.html',
+  styleUrls: ['./radio-field.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormRadioComponent implements OnInit {
+export class RadioFieldComponent implements OnInit {
 
   config: RadioFieldConfig;
   group: FormGroup;

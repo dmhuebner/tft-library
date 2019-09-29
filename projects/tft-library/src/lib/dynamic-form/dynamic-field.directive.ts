@@ -2,7 +2,7 @@ import { Directive, Input, ComponentFactoryResolver, ViewContainerRef, OnInit } 
 import { FormGroup } from '@angular/forms';
 import { FormGroupListComponent } from './form-group-list/form-group-list.component';
 import { FormGroupComponent } from './form-group/form-group.component';
-import { FormRadioComponent } from './form-radio/form-radio.component';
+import { RadioFieldComponent } from './material/radio-field/radio-field.component';
 import { AnyFieldConfig } from './models';
 import {
   InputFieldComponent,
@@ -19,7 +19,7 @@ const components = {
   select: SelectFieldComponent,
   group: FormGroupComponent,
   groupList: FormGroupListComponent,
-  radio: FormRadioComponent,
+  radio: RadioFieldComponent,
   autocomplete: AutocompleteFieldComponent,
   textarea: TextareaFieldComponent,
   checkbox: CheckboxFieldComponent

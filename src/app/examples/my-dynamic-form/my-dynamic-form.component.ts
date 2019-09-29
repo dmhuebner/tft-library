@@ -422,13 +422,13 @@ export class MyDynamicFormComponent implements OnInit, AfterViewInit {
                   return of([
                     { label: 'gold 1', value: 'g1'},
                     { label: 'gold 2', value: 'g2'}
-                  ])
+                  ]);
 
                 default:
                   return of([
                     { label: 'default 1', value: 'd1'},
                     { label: 'default 2', value: 'd2'},
-                  ])
+                  ]);
               }
             })
           )

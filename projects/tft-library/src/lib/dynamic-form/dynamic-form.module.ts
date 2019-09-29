@@ -19,8 +19,7 @@ import {
 } from './material';
 import { FormGroupComponent } from './form-group/form-group.component';
 import { FormGroupListComponent } from './form-group-list/form-group-list.component';
-// TODO Rename Radio component
-import { FormRadioComponent } from './form-radio/form-radio.component';
+import { RadioFieldComponent } from './material/radio-field/radio-field.component';
 // directives
 import { DynamicFieldDirective } from './dynamic-field.directive';
 
@@ -33,7 +32,7 @@ const FORM_FIELD_COMPONENTS = [
   RaisedButtonComponent,
   FormGroupComponent,
   FormGroupListComponent,
-  FormRadioComponent
+  RadioFieldComponent
 ];
 
 @NgModule({
@@ -71,7 +70,6 @@ export {
   RaisedButtonComponent,
   FormGroupComponent,
   FormGroupListComponent,
-  // TODO Rename radio
-  FormRadioComponent
+  RadioFieldComponent
 };
 
